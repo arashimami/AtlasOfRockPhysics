@@ -103,9 +103,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessWellLogModule.cs" />
-    <Compile Include="CopyWellLogWithLinearTransformWorkstep.cs" />
+    <Compile Include="Sc1_CopyWellLogWithLinearTransformWorkstep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RockPhysicsPlugin.cs" />
+    <Compile Include="Sc2_CopyWellLogToOtherWellLogformWorkstep.cs" />
+    <Compile Include="Sc3_WellLogToDictionaryWorkspace.cs" />
+    <Compile Include="Sc4AND5_DictionaryWellLogToDictionaryWorkspace.cs" />
+    <Compile Include="Sc6_DictionaryWellLogToWellLogWorkspace.cs" />
+    <Compile Include="Sc7_ModifyWellLogWorkstep.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

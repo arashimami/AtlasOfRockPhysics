@@ -13,7 +13,12 @@ namespace AtlasOfRockPhysicsPlugin
     [ModuleAppearance(typeof(AccessWellLogModuleAppearance))]
     public class AccessWellLogModule : IModule
     {
-        private Process m_copywelllogwithlineartransformworkstepInstance;
+        private Process m_sc7_modifywelllogworkstepInstance;
+        private Process m_sc6_dictionarywelllogtowelllogworkspaceInstance;
+        private Process m_Sc4AND5_DictionaryWellLogToDictionaryWorkspaceInstance;
+        private Process m_sc2_copywelllogtootherwelllogformworkstepInstance;
+        private Process m_sc3_welllogtodictionaryworkspaceInstance;
+        private Process m_Sc1_CopyWellLogWithLinearTransformWorkstepInstance;
         public AccessWellLogModule()
         {
             //
@@ -43,11 +48,36 @@ namespace AtlasOfRockPhysicsPlugin
         /// </summary>
         public void Integrate()
         {
+            // Register AtlasOfRockPhysicsPlugin.Sc7_ModifyWellLogWorkstep
+            AtlasOfRockPhysicsPlugin.Sc7_ModifyWellLogWorkstep sc7_modifywelllogworkstepInstance = new AtlasOfRockPhysicsPlugin.Sc7_ModifyWellLogWorkstep();
+            PetrelSystem.WorkflowEditor.Add(sc7_modifywelllogworkstepInstance);
+            m_sc7_modifywelllogworkstepInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(sc7_modifywelllogworkstepInstance);
+            PetrelSystem.ProcessDiagram.Add(m_sc7_modifywelllogworkstepInstance, "Plug-ins");
+            // Register AtlasOfRockPhysicsPlugin.Sc6_DictionaryWellLogToWellLogWorkspace
+            AtlasOfRockPhysicsPlugin.Sc6_DictionaryWellLogToWellLogWorkspace sc6_dictionarywelllogtowelllogworkspaceInstance = new AtlasOfRockPhysicsPlugin.Sc6_DictionaryWellLogToWellLogWorkspace();
+            PetrelSystem.WorkflowEditor.Add(sc6_dictionarywelllogtowelllogworkspaceInstance);
+            m_sc6_dictionarywelllogtowelllogworkspaceInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(sc6_dictionarywelllogtowelllogworkspaceInstance);
+            PetrelSystem.ProcessDiagram.Add(m_sc6_dictionarywelllogtowelllogworkspaceInstance, "Plug-ins");
+            // Register AtlasOfRockPhysicsPlugin.Sc4_DictionaryWellLogToDictionaryWorkspace
+            AtlasOfRockPhysicsPlugin.Sc4AND5_DictionaryWellLogToDictionaryWorkspace Sc4AND5_DictionaryWellLogToDictionaryWorkspace = new AtlasOfRockPhysicsPlugin.Sc4AND5_DictionaryWellLogToDictionaryWorkspace();
+            PetrelSystem.WorkflowEditor.Add(Sc4AND5_DictionaryWellLogToDictionaryWorkspace);
+            m_Sc4AND5_DictionaryWellLogToDictionaryWorkspaceInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(Sc4AND5_DictionaryWellLogToDictionaryWorkspace);
+            PetrelSystem.ProcessDiagram.Add(m_Sc4AND5_DictionaryWellLogToDictionaryWorkspaceInstance, "Plug-ins");
+            // Register AtlasOfRockPhysicsPlugin.Sc2_CopyWellLogToOtherWellLogformWorkstep
+            AtlasOfRockPhysicsPlugin.Sc2_CopyWellLogToOtherWellLogformWorkstep sc2_copywelllogtootherwelllogformworkstepInstance = new AtlasOfRockPhysicsPlugin.Sc2_CopyWellLogToOtherWellLogformWorkstep();
+            PetrelSystem.WorkflowEditor.Add(sc2_copywelllogtootherwelllogformworkstepInstance);
+            m_sc2_copywelllogtootherwelllogformworkstepInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(sc2_copywelllogtootherwelllogformworkstepInstance);
+            PetrelSystem.ProcessDiagram.Add(m_sc2_copywelllogtootherwelllogformworkstepInstance, "Plug-ins");
+            // Register AtlasOfRockPhysicsPlugin.Sc3_WellLogToDictionaryWorkspace
+            AtlasOfRockPhysicsPlugin.Sc3_WellLogToDictionaryWorkspace sc3_welllogtodictionaryworkspaceInstance = new AtlasOfRockPhysicsPlugin.Sc3_WellLogToDictionaryWorkspace();
+            PetrelSystem.WorkflowEditor.Add(sc3_welllogtodictionaryworkspaceInstance);
+            m_sc3_welllogtodictionaryworkspaceInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(sc3_welllogtodictionaryworkspaceInstance);
+            PetrelSystem.ProcessDiagram.Add(m_sc3_welllogtodictionaryworkspaceInstance, "Plug-ins");
             // Register AtlasOfRockPhysicsPlugin.CopyWellLogWithLinearTransformWorkstep
-            AtlasOfRockPhysicsPlugin.CopyWellLogWithLinearTransformWorkstep copywelllogwithlineartransformworkstepInstance = new AtlasOfRockPhysicsPlugin.CopyWellLogWithLinearTransformWorkstep();
+            AtlasOfRockPhysicsPlugin.Sc1_CopyWellLogWithLinearTransformWorkstep copywelllogwithlineartransformworkstepInstance = new AtlasOfRockPhysicsPlugin.Sc1_CopyWellLogWithLinearTransformWorkstep();
             PetrelSystem.WorkflowEditor.Add(copywelllogwithlineartransformworkstepInstance);
-            m_copywelllogwithlineartransformworkstepInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(copywelllogwithlineartransformworkstepInstance);
-            PetrelSystem.ProcessDiagram.Add(m_copywelllogwithlineartransformworkstepInstance, "Plug-ins");
+            m_Sc1_CopyWellLogWithLinearTransformWorkstepInstance = new Slb.Ocean.Petrel.Workflow.WorkstepProcessWrapper(copywelllogwithlineartransformworkstepInstance);
+            PetrelSystem.ProcessDiagram.Add(m_Sc1_CopyWellLogWithLinearTransformWorkstepInstance, "Plug-ins");
 
             // TODO:  Add AccessWellLogModule.Integrate implementation
         }
@@ -101,7 +131,12 @@ namespace AtlasOfRockPhysicsPlugin
         /// </summary>
         public void Disintegrate()
         {
-            PetrelSystem.ProcessDiagram.Remove(m_copywelllogwithlineartransformworkstepInstance);
+            PetrelSystem.ProcessDiagram.Remove(m_sc7_modifywelllogworkstepInstance);
+            PetrelSystem.ProcessDiagram.Remove(m_sc6_dictionarywelllogtowelllogworkspaceInstance);
+            PetrelSystem.ProcessDiagram.Remove(m_Sc4AND5_DictionaryWellLogToDictionaryWorkspaceInstance);
+            PetrelSystem.ProcessDiagram.Remove(m_sc2_copywelllogtootherwelllogformworkstepInstance);
+            PetrelSystem.ProcessDiagram.Remove(m_sc3_welllogtodictionaryworkspaceInstance);
+            PetrelSystem.ProcessDiagram.Remove(m_Sc1_CopyWellLogWithLinearTransformWorkstepInstance);
             DataManager.WorkspaceEvents.Opened -= this.WorkspaceOpened;
             DataManager.WorkspaceEvents.Closing -= this.WorkspaceClosing;
             DataManager.WorkspaceEvents.Closed -= this.WorkspaceClosed;
